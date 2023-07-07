@@ -23,11 +23,13 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 	//변수 추가
-	UPROPERTY(EditAnywhere) //blueprint에서도 보이도록 설정 
-	int32 MyInt = 99;
+	UPROPERTY(EditAnywhere, Category = "Moving Platform") //blueprint에서도 보이도록 설정 
+	FVector PlatformVelocity = FVector(100,0,0);
+	UPROPERTY(EditAnywhere, Category = "Moving Platform")
+	float MoveDistance =100;
+	UPROPERTY(EditAnywhere)
+	FVector StartLocation;
 
-	UPROPERTY(EditAnywhere) //blueprint에서도 보이도록 설정 
-	float MyFloat = 5.99;
-	UPROPERTY(EditAnywhere) //blueprint에서도 보이도록 설정 
-	bool MyBool = true;
+
+
 };
