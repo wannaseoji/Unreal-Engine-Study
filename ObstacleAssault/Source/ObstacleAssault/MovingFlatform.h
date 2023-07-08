@@ -22,6 +22,10 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+
+private:
+
 	//변수 추가
 	UPROPERTY(EditAnywhere, Category = "Moving Platform") //blueprint에서도 보이도록 설정 
 	FVector PlatformVelocity = FVector(100,0,0);
@@ -29,7 +33,11 @@ public:
 	float MoveDistance =100;
 	UPROPERTY(EditAnywhere)
 	FVector StartLocation;
+	UPROPERTY(EditAnywhere, Category = "Rotation")
+	FRotator RotationVelocity;
 
+	void MovePlatform(float DeltaTime);
+	void RotatePlatform(float DeltaTime);
 
 
 };

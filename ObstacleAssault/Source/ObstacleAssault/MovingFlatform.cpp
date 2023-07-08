@@ -19,12 +19,23 @@ void AMovingFlatform::BeginPlay()
 	// Unity 의 Start와 같은 역할
 	// Header에서 선언했던 변수들을 접근하고 초기화 할 수 있다.
 	StartLocation = GetActorLocation();
+	FString str = GetName();
+	UE_LOG(LogTemp, Display, TEXT("Your message %s"), *str);
+
+	UE_LOG(LogTemp, Display, TEXT("Your message %f"), MoveDistance);
 }
 
 // Called every frame
 void AMovingFlatform::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	MovePlatform(DeltaTime);
+	RotatePlatform(DeltaTime);
+
+}
+
+void AMovingFlatform::MovePlatform(float DeltaTime){
 	FVector CurrentLocation = GetActorLocation();
 
 	CurrentLocation = CurrentLocation+(PlatformVelocity * DeltaTime);
@@ -42,3 +53,11 @@ void AMovingFlatform::Tick(float DeltaTime)
 
 }
 
+void AMovingFlatform::RotatePlatform(float DeltaTime){
+	
+	UE_LOG(LogTemp, Display, TEXT("%s Rotating"), *GetName());
+	
+
+	AddActorLocalRotation(RotationVelocity*DeltaTime);
+
+}
